@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          BackgroundColor="#252425"
+	     xmlns:controls="clr-namespace:TattooApp.Pages.ControlTemplate" xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"    
+	     x:Class="TattooApp.HomePage"
+             Shell.NavBarIsVisible="False"
+
+             Title="HomePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TitleTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="30"/>
+            </Style>
+
+            <Style x:Key="SubTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="SubTitleTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style TargetType="Image">
+                <Setter Property="HeightRequest" Value="50"/>
+            </Style>
+
+            <Style x:Key="ArtistLayoutStyle" TargetType="Grid">
+                <Setter Property="HeightRequest" Value="150"/>
+                <Setter Property="WidthRequest" Value="80"/>
+            </Style>
+
+            <Style x:Key="ArtistBorderStyle" TargetType="Border">
+                <Setter Property="StrokeThickness" Value="2" />
+            </Style>
+            <Style x:Key="CategoryBorderStyle" TargetType="Border">
+                <Setter Property="StrokeThickness" Value="2" />
+                <Setter Property="BackgroundColor" Value="Gray"/>
+                <Setter Property="Padding" Value="10"/>
+            </Style>
+            <Style x:Key="TrendBorderStyle" TargetType="Border">
+                <Setter Property="StrokeThickness" Value="2" />
+                <Setter Property="BackgroundColor" Value="White"/>
+            </Style>
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Margin="20">
+            <VerticalStackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                <Label
+                Text="Let's find"
+               Style="{StaticResource TitleTextStyle}" />
+
+                <Label
+                Text="your dreamy tattoo"
+                Style="{StaticResource SubTextStyle}"/>
+            </VerticalStackLayout>
+            <Grid ColumnSpacing="10" ColumnDefinitions="*,Auto">
+                <Frame Padding="0" HeightRequest="40" CornerRadius="10" IsClippedToBounds="True">
+                    <SearchBar BackgroundColor="Gray" />
+                </Frame>
+                <Border Grid.Column="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10"/>
+                    </Border.StrokeShape>
+                    <Border.Background>
+                        <!-- StartPoint defaults to (0,0) -->
+                        <LinearGradientBrush EndPoint="1,0">
+                            <GradientStop Color="#FF56F6"
+                          Offset="0.1" />
+                            <GradientStop Color="#4A9EE2"
+                          Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <ImageButton HeightRequest="40" WidthRequest="40" Source="dotnet_bot" >
+                    </ImageButton>
+                </Border>
+            </Grid>
+            <VerticalStackLayout>
+                <Label Style="{StaticResource SubTitleTextStyle}" Text="Artist"/>
+                <CollectionView HeightRequest="90" ItemsSource="{Binding ArtistList}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                        Orientation="Horizontal"
+                        ItemSpacing="6"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Style="{StaticResource ArtistLayoutStyle}" RowDefinitions="Auto,Auto">
+                                <Border Style="{StaticResource ArtistBorderStyle}">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10"/>
+                                    </Border.StrokeShape>
+                                    <Border.Background>
+                                        <!-- StartPoint defaults to (0,0) -->
+                                        <LinearGradientBrush EndPoint="1,0">
+                                            <GradientStop Color="#FF56F6"
+                                                Offset="0.1" />
+                                            <GradientStop Color="#4A9EE2"
+                                                Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Image 
+                                    Source="{Binding Image}"/>
+                                </Border>
+                                <Label Opacity="0.5" Grid.Row="1" Text="{Binding Name}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <Label Style="{StaticResource SubTitleTextStyle}" Text="Categories"/>
+            <CollectionView HeightRequest="40">
+                <CollectionView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Classic</x:String>
+                        <x:String>New school</x:String>
+                        <x:String>Japanese</x:String>
+                        <x:String>Black and grey</x:String>
+                        <x:String>Portraiture</x:String>
+                        <x:String>Stick and poke</x:String>
+                        <x:String>Realism</x:String>
+                        <x:String>Blackwork</x:String>
+                        <x:String>Biomechanical</x:String>
+                        <x:String>Geometric</x:String>
+                        <x:String>Surrealism</x:String>
+                    </x:Array>
+                </CollectionView.ItemsSource>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        Orientation="Horizontal"
+                        ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout>
+                            <Border Style="{StaticResource CategoryBorderStyle}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10"/>
+                                </Border.StrokeShape>
+                                <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding .}"/>
+                            </Border>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <VerticalStackLayout>
+                <Label Style="{StaticResource SubTitleTextStyle}" Text="Trend Designs"/>
+                <CollectionView HeightRequest="200"  ItemsSource="{Binding TrendList}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                        Orientation="Horizontal"
+                        ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame WidthRequest="150" Padding="10" BackgroundColor="Gray">
+                                <Grid RowDefinitions="*,Auto">
+                                    <Border Style="{StaticResource TrendBorderStyle}">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10"/>
+                                        </Border.StrokeShape>
+                                        <Image 
+                                    Source="{Binding Image}">
+                                            <Image.Behaviors>
+                                                <toolkit:IconTintColorBehavior TintColor="#FF56F6"/>
+                                            </Image.Behaviors>
+                                        </Image>
+                                    </Border>
+                                    <Label Opacity="0.8" HorizontalOptions="Center" FontSize="18" Grid.Row="1" Text="{Binding Name}"/>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

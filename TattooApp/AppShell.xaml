@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="TattooApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TattooApp"
+    xmlns:pages="clr-namespace:TattooApp.Pages"
+    BackgroundColor="#252425"
+    Shell.TabBarBackgroundColor="Gray"
+    Shell.FlyoutBehavior="Disabled">
+    <Shell.DisabledColor>lightgray</Shell.DisabledColor>
+    <Shell.UnselectedColor>white</Shell.UnselectedColor>
+
+    <!--<ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:HomePage}"
+        Route="MainPage" />-->
+     <TabBar>
+       <Tab  Icon="home.png">
+           <ShellContent ContentTemplate="{DataTemplate  local:HomePage}" />
+       </Tab>
+       <Tab Icon="user.png">
+           <ShellContent ContentTemplate="{DataTemplate  pages:ProfilePage}" />
+       </Tab>
+    </TabBar>
+</Shell>
+

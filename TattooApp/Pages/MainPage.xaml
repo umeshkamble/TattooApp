@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             BackgroundColor="#252425"
+             Shell.NavBarHasShadow="False"
+             Shell.NavBarIsVisible="False"
+             x:Class="TattooApp.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TitleTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="30"/>
+            </Style>
+
+            <Style x:Key="SubTextStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style TargetType="Image">
+                <Setter Property="HeightRequest" Value="50"/>
+            </Style>
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <Grid
+        Margin="20"
+        RowDefinitions="2*,*,*"
+        VerticalOptions="FillAndExpand">
+        <Grid
+            VerticalOptions="FillAndExpand"
+            Margin="0"
+            ColumnDefinitions="*,*,*"
+            RowDefinitions="*,2*,*">
+
+            <Image Margin="80,0,0,0"
+		            Source="lipicon.png">
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{StaticResource White}"/>
+                </Image.Behaviors>
+            </Image>
+
+            <Image
+                    Margin="0,0,80,0"
+		            Grid.Row="0"
+		            Grid.Column="2"
+                    Source="heart.png"
+                    HorizontalOptions="Center" >
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{StaticResource White}"/>
+                </Image.Behaviors>
+            </Image>
+            <Image
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Source="diamond.png"
+                    HorizontalOptions="Center" >
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{StaticResource White}"/>
+                </Image.Behaviors>
+            </Image>
+            <Image
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Source="rose.png"
+                    HeightRequest="100"
+                    WidthRequest="100"
+                    HorizontalOptions="Center" />
+            <Image
+                    Grid.Row="1"
+                     Grid.Column="2"
+                    Source="angel.png"
+                    HorizontalOptions="Center" >
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{StaticResource White}"/>
+                </Image.Behaviors>
+            </Image>
+            <Image
+                    Margin="80,0,0,0"            
+		            Grid.Row="2"
+                    Grid.Column="0"
+                    Source="swallow.png"
+
+                    HorizontalOptions="Center" >
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{StaticResource White}"/>
+                </Image.Behaviors>
+            </Image>
+            <Image
+                    Margin="0,0,90,0"            
+		            Grid.Row="2"
+                    Grid.Column="2"
+                    Source="ship.png"
+                    HorizontalOptions="Center" >
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior TintColor="{StaticResource White}"/>
+                </Image.Behaviors>
+            </Image>
+        </Grid>
+
+        <VerticalStackLayout Grid.Row="1" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+            <Label
+                Text="Let's get"
+               Style="{StaticResource TitleTextStyle}" />
+
+            <Label
+                Text="dreamy tattoos"
+                Style="{StaticResource SubTextStyle}"/>
+        </VerticalStackLayout>
+
+        <Frame Padding="0" CornerRadius="15"  HeightRequest="50" BackgroundColor="Transparent" IsClippedToBounds="True"  Grid.Row="2">
+            <Button
+            x:Name="CounterBtn"
+            CornerRadius="10"    
+	        Text="Click me"
+            HeightRequest="50"
+            Clicked="OnCounterClicked"
+            VerticalOptions="Start">
+                <Button.Background>
+                    <!-- StartPoint defaults to (0,0) -->
+                    <LinearGradientBrush EndPoint="1,0">
+                        <GradientStop Color="#FF56F6"
+                          Offset="0.1" />
+                        <GradientStop Color="#4A9EE2"
+                          Offset="1.0" />
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </Frame>
+
+    </Grid>
+</ContentPage>
+

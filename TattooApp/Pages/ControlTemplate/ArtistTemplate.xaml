@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TattooApp.Pages.ControlTemplate.ArtistTemplate">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="ArtistLayoutStyle" TargetType="Grid">
+                <Setter Property="HeightRequest" Value="80" />
+                <Setter Property="BackgroundColor" Value="Yellow"/>
+            </Style>
+
+            <Style x:Key="ArtistBorderStyle" TargetType="Border">
+                <Setter Property="StrokeThickness" Value="2" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <Grid RowDefinitions="Auto,Auto"
+        Style="{StaticResource ArtistLayoutStyle}">
+        <Border
+            Style="{StaticResource ArtistBorderStyle}">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20"/>
+            </Border.StrokeShape>
+            <Image 
+                Source="{Binding Image}"/>
+        </Border>
+        <Label Grid.Row="1" TextColor="White" Text="{Binding Name}"/>
+    </Grid>
+</ContentView>
+
